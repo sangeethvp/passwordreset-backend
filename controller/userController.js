@@ -115,3 +115,11 @@ exports.resetpassword = async (req, res) => {
     }
 };
 
+exports.getUserinfo  = async(req,res)=>{
+    try{
+        const user = await User.find().select('-password');
+        res.json(user)
+    }catch(error){
+        res.status(401).json({message:"error getting informations"})
+    }
+};
